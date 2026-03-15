@@ -1,0 +1,123 @@
+/* ==============================================
+   layout.css — Page structure & layout
+   ============================================== */
+
+/* ---- Sticky Header ---- */
+.site-header {
+  background: var(--surface);
+  border-bottom: 2px solid var(--accent);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.header-logo { display: flex; align-items: baseline; gap: 0.4rem; }
+.header-logo .brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.header-logo .tagline {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.header-count { font-size: 0.8rem; color: var(--muted); }
+.header-count span { color: var(--accent); font-weight: 600; font-size: 1rem; }
+
+/* ---- Hero ---- */
+.hero {
+  background: linear-gradient(135deg, #0d0e10 0%, #1a1210 50%, #0b0c0e 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 3.5rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,200,74,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 4px;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p { color: var(--muted); font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+/* ---- Page wrapper — sidebar + main ---- */
+.page-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .page-wrapper { grid-template-columns: 1fr; }
+  .filter-sidebar { position: static !important; }
+}
+
+/* ---- Sidebar ---- */
+.filter-sidebar {
+  position: sticky;
+  top: 88px;
+}
+
+/* ---- Results bar ---- */
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.results-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+.sort-control select {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---- Car grid ---- */
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}

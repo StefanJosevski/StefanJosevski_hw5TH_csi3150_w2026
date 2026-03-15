@@ -1,0 +1,322 @@
+/* ==============================================
+   components.css — Filter panel & Car cards
+   ============================================== */
+
+/* ---- FILTER PANEL ---- */
+.filter-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.filter-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.filter-panel header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.btn-reset {
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-reset:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Filter groups */
+.filter-group { margin-bottom: 1.4rem; }
+
+.filter-group label,
+.filter-group legend {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.filter-group fieldset { border: none; padding: 0; }
+
+.range-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+/* Inputs */
+.filter-input,
+.filter-select {
+  width: 100%;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.filter-input:focus,
+.filter-select:focus { outline: none; border-color: var(--accent); }
+.filter-input::placeholder { color: var(--muted); }
+
+/* Checkbox chips */
+.chip-group { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.chip-label { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; }
+.chip-label input[type="checkbox"] { display: none; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.28rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.chip-label input:checked + .chip {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Color dot */
+.color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.color-white { background: #f5f5f5; border: 1px solid #888; }
+.color-black { background: #111; border: 1px solid #555; }
+
+/* Apply button */
+.btn-apply {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--accent);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: var(--radius);
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.btn-apply:hover  { opacity: 0.88; transform: translateY(-1px); }
+.btn-apply:active { transform: translateY(0); }
+
+/* ---- CAR CARD ---- */
+.car-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  animation: fadeUp 0.35s ease both;
+}
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.6);
+  border-color: rgba(232,200,74,0.4);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.car-card:nth-child(1) { animation-delay: 0.05s; }
+.car-card:nth-child(2) { animation-delay: 0.10s; }
+.car-card:nth-child(3) { animation-delay: 0.15s; }
+
+/* Card photo */
+.car-card__img {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+.car-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.car-card:hover .car-card__img img { transform: scale(1.06); }
+
+/* Gradient overlay at bottom of photo */
+.car-card__img::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50px;
+  background: linear-gradient(to top, var(--card), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Year badge */
+.car-card__year-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--accent);
+  color: #000;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* Card body */
+.car-card__body {
+  padding: 1rem 1rem 0.85rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-card__make {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+
+.car-card__model {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+/* Stats grid */
+.car-card__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+}
+.stat__label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+.stat__value {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stat__color-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Gas */
+.car-card__gas {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-bottom: 0.85rem;
+  flex: 1;
+}
+
+/* Footer */
+.car-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.car-card__price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.65rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+.btn-details {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 0.35rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-details:hover { background: var(--accent); color: #000; }
+
+/* ---- EMPTY STATE ---- */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--muted);
+}
+.empty-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.4; }
+.empty-state h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.empty-state p { font-size: 0.9rem; }

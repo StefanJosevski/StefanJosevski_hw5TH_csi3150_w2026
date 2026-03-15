@@ -1,0 +1,49 @@
+/* ==============================================
+   main.css — CSS variables, reset, base styles
+   ============================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ---- Root Variables ---- */
+:root {
+  --bg:       #0b0c0e;
+  --surface:  #141618;
+  --card:     #1a1c1f;
+  --border:   #2a2c30;
+  --accent:   #e8c84a;
+  --text:     #f0f0ee;
+  --muted:    #7a7c82;
+  --radius:   10px;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+button { cursor: pointer; font-family: inherit; border: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}

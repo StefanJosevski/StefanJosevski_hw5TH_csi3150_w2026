@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse quality pre-owned vehicles at DriveHouse Motors." />
+  <title>DriveHouse Motors — Pre-Owned Vehicles</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Stylesheets (order matters) -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="header-logo">
+      <span class="brand">DriveHouse</span>
+      <span class="tagline">Pre-Owned Motors</span>
+    </div>
+    <p class="header-count">
+      Showing <span id="header-count">3</span> vehicles
+    </p>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <h1 id="hero-heading">Find Your <em>Next</em> Ride</h1>
+    <p>Browse our hand-picked selection of premium pre-owned vehicles.</p>
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="page-wrapper">
+
+    <!-- FILTER SIDEBAR -->
+    <aside class="filter-sidebar" aria-label="Filter vehicles">
+      <section class="filter-panel">
+
+        <header>
+          <h2>Filters</h2>
+          <button class="btn-reset" id="btn-reset" type="button">Reset All</button>
+        </header>
+
+        <!-- Year Range -->
+        <div class="filter-group">
+          <label>Year Range</label>
+          <div class="range-group">
+            <input class="filter-input" type="number" id="min-year"
+                   placeholder="Min" min="2000" max="2030" aria-label="Minimum year" />
+            <input class="filter-input" type="number" id="max-year"
+                   placeholder="Max" min="2000" max="2030" aria-label="Maximum year" />
+          </div>
+        </div>
+
+        <!-- Make -->
+        <div class="filter-group">
+          <fieldset>
+            <legend>Make</legend>
+            <div class="chip-group" id="make-chips" role="group" aria-label="Filter by make"></div>
+          </fieldset>
+        </div>
+
+        <!-- Max Mileage -->
+        <div class="filter-group">
+          <label for="max-mileage">Max Mileage</label>
+          <select class="filter-input filter-select" id="max-mileage" aria-label="Maximum mileage">
+            <option value="">Any mileage</option>
+            <option value="5000">Under 5,000 mi</option>
+            <option value="10000">Under 10,000 mi</option>
+            <option value="15000">Under 15,000 mi</option>
+            <option value="25000">Under 25,000 mi</option>
+            <option value="50000">Under 50,000 mi</option>
+          </select>
+        </div>
+
+        <!-- Price Range -->
+        <div class="filter-group">
+          <label>Price Range ($)</label>
+          <div class="range-group">
+            <input class="filter-input" type="number" id="min-price"
+                   placeholder="Min" min="0" aria-label="Minimum price" />
+            <input class="filter-input" type="number" id="max-price"
+                   placeholder="Max" min="0" aria-label="Maximum price" />
+          </div>
+        </div>
+
+        <!-- Color -->
+        <div class="filter-group">
+          <fieldset>
+            <legend>Color</legend>
+            <div class="chip-group" id="color-chips" role="group" aria-label="Filter by color"></div>
+          </fieldset>
+        </div>
+
+        <button class="btn-apply" id="btn-apply" type="button">Apply Filters</button>
+
+      </section>
+    </aside>
+
+    <!-- CAR LISTINGS -->
+    <main aria-label="Car listings">
+
+      <div class="results-header">
+        <h2><span id="result-count">3</span> of <span id="total-count">3</span> Vehicles</h2>
+        <div class="sort-control">
+          <label for="sort-select" class="sr-only">Sort by</label>
+          <select id="sort-select" aria-label="Sort vehicles">
+            <option value="default">Sort: Default</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="year-desc">Year: Newest First</option>
+            <option value="year-asc">Year: Oldest First</option>
+            <option value="mileage-asc">Mileage: Lowest First</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="car-grid" id="car-grid" aria-live="polite" aria-label="Car listings"></div>
+
+    </main>
+
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; 2026 DriveHouse Motors &mdash; CSI 3150 Programming Assignment 1</p>
+  </footer>
+
+  <!-- Scripts: data MUST load before main.js -->
+  <script src="js/usedCars.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
